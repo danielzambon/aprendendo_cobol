@@ -1,7 +1,7 @@
       ******************************************************************
       * Author: DANIEL ZAMBON
       * Date:06/06/2023
-      * Purpose: OPERADORES ARITIMETICOS
+      * Purpose: COMANDOS IF/ELSE/ENDIF
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -16,45 +16,34 @@
 
        77 WRK-NUM1 PIC 9(02) VALUE ZEROS.
        77 WRK-NUM2 PIC 9(02) VALUE ZEROS.
-       77 WRK-RESULT PIC 9(04) VALUE ZEROS.
-       77 RESTO PIC 9(04) VALUE ZEROS.
+       77 MEDIA PIC 9(04) VALUE ZEROS.
+
 
 
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
 
-       DISPLAY 'NUMERO 1: '
-       ACCEPT WRK-NUM1 FROM CONSOLE.
+       DISPLAY 'NOTA 1: '
+       ACCEPT WRK-NUM1.
 
-       DISPLAY 'NUMERO 2: '
-       ACCEPT WRK-NUM2 FROM CONSOLE.
+       DISPLAY 'NOTA 2: '
+       ACCEPT WRK-NUM2.
 
-       DISPLAY '*******************************************'
-       DISPLAY 'NUMERO 1 : ' WRK-NUM1
-       DISPLAY 'NUMERO 2 : ' WRK-NUM2
+       DISPLAY ''
+       DISPLAY 'NOTA 1 : ' WRK-NUM1
+       DISPLAY 'NOTA 2 : ' WRK-NUM2
+       COMPUTE MEDIA = (WRK-NUM1 + WRK-NUM2) / 2.
+       DISPLAY 'RESULTADO MEDIA: ' MEDIA.
 
-       DISPLAY '***********************SOMA********************'
-       ADD WRK-NUM1 WRK-NUM2 TO WRK-RESULT
-       DISPLAY 'RESULTADO SOMA: ' WRK-RESULT
-
-       DISPLAY '**********************SUBTRACAO****************'
-       SUBTRACT WRK-NUM1 FROM WRK-NUM2 GIVING WRK-RESULT.
-       DISPLAY 'RESULTADO SUBTRACAO: ' WRK-RESULT
-
-       DISPLAY '**************************DIVISAO**************'
-       DIVIDE WRK-NUM1 BY WRK-NUM2 GIVING WRK-RESULT
-       REMAINDER RESTO.
-
-       DISPLAY 'RESULTADO DIVISAO: ' WRK-RESULT
-       DISPLAY 'RESULTADO RESTO: ' RESTO
-
-       DISPLAY '**************************MULTIPLICACAO********'
-       MULTIPLY WRK-NUM1 BY WRK-NUM2 GIVING WRK-RESULT.
-       DISPLAY 'RESULTADO MULTIPLICACAO: ' WRK-RESULT.
-
-       DISPLAY '**************************COMPUTE**************'
-       COMPUTE WRK-RESULT = (WRK-NUM1 + WRK-NUM2) / 2.
-       DISPLAY 'RESULTADO MEDIA: ' WRK-RESULT.
+       IF MEDIA >= 6
+             DISPLAY 'APROVADO'
+       ELSE
+             IF MEDIA <= 2
+                   DISPLAY 'REPROVADO'
+                   ELSE
+                   DISPLAY 'RECUPERACAO'
+             END-IF
+       END-IF.
 
             STOP RUN.
        END PROGRAM YOUR-PROGRAM-NAME.
