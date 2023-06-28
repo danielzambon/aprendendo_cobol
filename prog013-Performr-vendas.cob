@@ -38,7 +38,7 @@
 
              ADD 1 TO QT.
              ADD VENDAS TO ACUM
-             ACCEPT VENDAS.
+             PERFORM 0100-INICIALIZADA.
 
        0210-PROCESSAR-FIM.
 
