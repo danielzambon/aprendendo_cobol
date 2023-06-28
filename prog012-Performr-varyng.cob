@@ -1,7 +1,7 @@
       ******************************************************************
       * Author: DANIEL ZAMBON
       * Date:27/06/2023
-      * Purpose: PERFORM VARYNG
+      * Purpose: RECEBER UM NUMERO E GERAR TABUADA
       * Tectonics: cobc
       ******************************************************************
        IDENTIFICATION DIVISION.
@@ -14,9 +14,9 @@
        FILE SECTION.
        WORKING-STORAGE SECTION.
 
-       77 WRK-NUM1     PIC 9(02)    VALUE ZEROS.
-       77 WRK-CONTADOR PIC 9(02)    VALUE 1.
-       77 WRK-RESULT   PIC 9(04)    VALUE ZEROS.
+       77 WRK-NUM1 PIC 9(02)    VALUE ZEROS.
+       77 WRK-NUM2 PIC 9(02)    VALUE 1.
+       77 WRK-RESULT PIC 9(02)    VALUE ZEROS.
 
        PROCEDURE DIVISION.
 
@@ -36,11 +36,12 @@
              ACCEPT WRK-NUM1.
 
        0200-PROCESSAR.
-             PERFORM VARYING WRK-CONTADOR FROM 1 BY 1
-             UNTIL WRK-CONTADOR > 20
-             COMPUTE WRK-RESULT = WRK-NUM1 * WRK-CONTADOR
-                   DISPLAY WRK-NUM1 ' X ' WRK-CONTADOR ' = ' WRK-RESULT
+             PERFORM 10 TIMES
+             COMPUTE WRK-RESULT = WRK-NUM1 * WRK-NUM2
+                   DISPLAY WRK-NUM1 ' X ' WRK-NUM2 ' = ' WRK-RESULT
+                   ADD 1 TO WRK-NUM2
              END-PERFORM.
+
 
        0210-PROCESSAR-FIM.
 
